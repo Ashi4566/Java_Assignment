@@ -1,65 +1,89 @@
-package Assignments;
+-------------Question----------------------------------------------------------------------------------------------------------------
 
-class Shapes {
-    private int side;       // for square
-    private int length;     // for rectangle
-    private int breadth;    // for rectangle
-    private int radius;     // for circle
-    private double area;
-    Shapes(){
-        System.out.println("Default Shape Created");
+/**Assignment 2:  (method + constructors)
+Create class as "Shape" 
+i want to calculate the area of the different shapes - square, rectangle, circle
+1. create 4 constructors - default contructor + three parameterized constrcutors for the shapes (using constructor overloading)
+2. create 3 methods for (square, rectangle, circle) display which will display the value of the area calculated
+3. calculate the area of the rhombus and triangle using the method overloading concept **/
+
+
+---------------Solution-------------------------------------------------------------------------------------------------------------
+
+class Shape {
+    String name;
+    double area;
+
+    // 1. Default constructor
+    Shape() {
+        this.name = "Unknown Shape";
+        this.area = 0.0;
     }
-    Shapes(int side){ // for square
-        this.side = side;
-        this.area = side*side;
+
+    // 2. Constructor for square
+    Shape(String name, int side) {
+        this.name = name;
+        this.area = side * side;
     }
-    Shapes(int length,int breadth){ // for rectangle
-        this.length =length;
-        this.breadth =breadth;
-        this.area = length*breadth;
+
+    // 3. Constructor for rectangle
+    Shape(String name, int length, int breadth) {
+        this.name = name;
+        this.area = length * breadth;
     }
-    Shapes(double radius){ // for circle
-        this.radius = (int)radius;
-        this.area = Math.PI*radius*radius;
+
+    // 4. Constructor for circle
+    Shape(String name, double radius) {
+        this.name = name;
+        this.area = 3.14 * radius * radius;
     }
-    public void square(){
-        System.out.println("Area of Square: " +area);
+
+    // Method to display area
+    public void display() {
+        System.out.println("Shape: " + name);
+        System.out.println("Area: " + area);
     }
-    public void rectangle(){
-        System.out.println("Area of Rectangle: " +area);
+
+    // Method Overloading - for Rhombus
+    public void area(double d1, double d2) {
+        double rhombusArea = (d1 * d2) / 2.0;
+        System.out.println("Shape: Rhombus");
+        System.out.println("Area: " + rhombusArea);
     }
-    public void circle(){
-        System.out.println("Area of Circle: " +area);
-    }
-    
-    // Method Overloading for Rhoombus and Triangle
-    public void area(double diagonal1,double diagonal2){
-        double result = (diagonal1*diagonal2)/2;
-        System.out.println("Area of Rhombus: " +result);
-    }
-    public void area(double base, double height,boolean isTriangle){
-        double result =(base*height)/2;
-        System.out.println("Area of Triangle: " +result);
+
+    // Method Overloading - for Triangle
+    public void area(double base, double height, boolean isTriangle) {
+        if (isTriangle) {
+            double triangleArea = 0.5 * base * height;
+            System.out.println("Shape: Triangle");
+            System.out.println("Area: " + triangleArea);
+        }
     }
 }
 
-public class Assignments2{
-    public static void main(String[] args){
+public class InheritanceExercise {
+    public static void main(String[] args) {
         // Square
-        Shapes s1 =new Shapes(5);
-        s1.square();
+        Shape square = new Shape("Square", 5);
+        square.display();
+        System.out.println();
 
         // Rectangle
-        Shapes s2 =new Shapes(4, 6);
-        s2.rectangle();
+        Shape rectangle = new Shape("Rectangle", 4, 6);
+        rectangle.display();
+        System.out.println();
 
         // Circle
-        Shapes s3 =new Shapes(3.5);
-        s3.circle();
+        Shape circle = new Shape("Circle", 3.5);
+        circle.display();
+        System.out.println();
 
-        // Rhombus and Triangle using method overloading
-        Shapes s4 =new Shapes();
-        s4.area(6.0,8.0); // rhombus
-        s4.area(5.0,10.0,true); // triangle
+        // Rhombus using method overloading
+        Shape rhombus = new Shape();
+        rhombus.area(6.0, 8.0);
+        System.out.println();
+
+        // Triangle using method overloading
+        rhombus.area(5.0, 10.0, true);
     }
 }
