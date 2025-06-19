@@ -1,6 +1,6 @@
 -------------Question----------------------------------------------------------------------------------------------------------------
 
-/**Assignment 2:  (method + constructors)
+/**Assignment:  (method + constructors)
 Create class as "Shape" 
 i want to calculate the area of the different shapes - square, rectangle, circle
 1. create 4 constructors - default contructor + three parameterized constrcutors for the shapes (using constructor overloading)
